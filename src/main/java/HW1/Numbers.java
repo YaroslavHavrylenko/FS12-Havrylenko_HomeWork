@@ -9,28 +9,29 @@ public class Numbers {
         System.out.printf("Random number is - %d\n", randomNumber);
         System.out.println("--- Let the game begin! ---");
         Scanner scanner = new Scanner(System.in);
-        int counter = 1;
         String stringNumbers = "";
 
         while (true) {
             System.out.print("Please, enter your number [0...100]: ");
             int yourNumber = scanner.nextInt();
-            stringNumbers = stringNumbers.concat(Integer.toString(yourNumber) +",");
-            int[] yourNumbersArray = new int[counter];
 
             if (yourNumber < randomNumber ) {
                 System.out.println("Your number is too small. Please, try again.");
-//                counter++;
+                stringNumbers = stringNumbers.concat(yourNumber +",");
             } else if (yourNumber > randomNumber) {
                 System.out.println("Your number is too big. Please, try again.");
-//                counter++;
+                stringNumbers = stringNumbers.concat(yourNumber +",");
             } else {
-                System.out.println(stringNumbers);
+                stringNumbers = stringNumbers.concat(Integer.toString(yourNumber));
+                String[] arrayOfStringNumbers = (stringNumbers.split(","));
+                int[] yourNumbersArray = new int[arrayOfStringNumbers.length];
+                for(int i = 0;i < arrayOfStringNumbers.length;i++) yourNumbersArray[i] = Integer.parseInt(arrayOfStringNumbers[i]);
+
+                Arrays.sort(yourNumbersArray);
+                System.out.println("Your numbers is: " + Arrays.toString(yourNumbersArray));
                 System.out.println("Congratulations, Yaroslav!");
                 break;
             }
-//            yourNumbersArray[counter-1] = yourNumber;
-//            System.out.println("Your numbers:" + Arrays.toString(yourNumbersArray));
         }
     }
 }
