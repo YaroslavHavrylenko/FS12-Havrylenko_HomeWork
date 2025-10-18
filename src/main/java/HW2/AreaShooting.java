@@ -58,8 +58,10 @@ public class AreaShooting {
 
             int shootY = Integer.parseInt(shootingRow) - 1;
             int shootX = Integer.parseInt(shootingColum) - 1;
-            if (axisY == shootY && axisY == shootX) {
+            System.out.printf("Постріл - %d, %d.  Мішень - %d, %d\n", shootY, shootX, axisY, axisX);
+            if (axisY == shootY && axisX == shootX) {
                 shootingAria[axisY][axisX] = " X ";
+                System.out.println("   --You have won!--");
                 renderShootingAria(shootingAria);
                 break;
             } else {
