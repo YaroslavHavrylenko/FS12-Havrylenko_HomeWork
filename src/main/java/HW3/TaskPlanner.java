@@ -64,12 +64,12 @@ public class TaskPlanner {
                         break;
                     }
                     default: {
-                        if (!answer.equals("exit")) System.out.println("Sorry, I don't understand you, please try again.");
+                        if (!answer.equalsIgnoreCase("exit")) System.out.println("Sorry, I don't understand you, please try again.");
                         break;
                     }
                 }
             }
-        } while (!answer.equals("exit"));
+        } while (!answer.equalsIgnoreCase("exit"));
     }
     public static void changeDayOfTheWeek (String dayOfWeek, String[][] schedule) {
         Scanner scanner = new Scanner(System.in);
