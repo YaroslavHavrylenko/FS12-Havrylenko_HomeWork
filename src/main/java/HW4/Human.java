@@ -1,6 +1,7 @@
 package HW4;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Human {
     private String name;
@@ -24,9 +25,7 @@ public class Human {
         this.age = age;
         if (iq < 0) {
             this.iq = 0;
-        } else if (iq > 100) {
-            this.iq = 100;
-        } else this.iq = iq;
+        } else this.iq = Math.min(iq, 100);
 //        this.father = father;
 //        this.mother = mother;
     }
@@ -36,9 +35,7 @@ public class Human {
         this.age = age;
         if (iq < 0) {
             this.iq = 0;
-        } else if (iq > 100) {
-            this.iq = 100;
-        } else this.iq = iq;
+        } else this.iq = Math.min(iq, 100);
 //        this.pet = pet;
 //        this.father = father;
 //        this.mother = mother;
@@ -73,9 +70,7 @@ public class Human {
     public void setIq(int iq) {
         if (iq < 0) {
             this.iq = 0;
-        } else if (iq > 100) {
-            this.iq = 100;
-        } else this.iq = iq;
+        } else this.iq = Math.min(iq, 100);
     }
 
 //    public Pet getPet() {
@@ -114,10 +109,25 @@ public class Human {
     }
 
     void greetPet () {
-        System.out.printf("Hi, %s", this.getFamily().getPet().getNickname());
+        System.out.printf("Hi, %s\n", this.getFamily().getPet().getNickname());
     }
     void describePet () {
         System.out.printf("I have a %s, it is %d year(s) old, it is %s!\n", this.getFamily().getPet().getSpecies(), this.getFamily().getPet().getAge(), this.getFamily().getPet().getTrickLevel() > 50 ? "too tricky": "almost not tricky");
+    }
+    public boolean feedPet (boolean isTimeToEat){
+        if (isTimeToEat){
+            System.out.printf("Hm... I feed my %s!\n", family.getPet().getNickname());
+            return true;
+        } else {
+            int comparisonTrickLevel = (int) (Math.random()*(100+1));
+            if (family.getPet().getTrickLevel() >= comparisonTrickLevel){
+                System.out.printf("Hm... I feed my %s!\n", family.getPet().getNickname());
+                return true;
+            } else {
+                System.out.printf("I think, %s not hangry!\n", family.getPet().getNickname());
+                return false;
+            }
+        }
     }
 
     @Override
@@ -126,11 +136,23 @@ public class Human {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", year=" + age +
-                ", iq=" + iq +
-                ", schedule=" + Arrays.toString(schedule) +
+                (iq == 0 ? "" : (", iq=" + iq)) +
+                (schedule == null ? "" : ", schedule=" + Arrays.deepToString(schedule)) +
 //                ", mother=" + this.getFamily().getMother() +
 //                ", father=" + this.getFamily().getFather() +
 //                ", pet=" + this.getFamily().getPet() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return getAge() == human.getAge() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname()) && Objects.equals(getFamily(), human.getFamily());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getSurname(), getAge(), getIq(), getFamily());
     }
 }

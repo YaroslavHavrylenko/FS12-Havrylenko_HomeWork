@@ -1,6 +1,7 @@
 package HW4;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Pet {
     private String species;
@@ -20,7 +21,7 @@ public class Pet {
         this.trickLevel = trickLevel;
         this.habits = habits;
     }
-    public Pet () {};
+    public Pet () {}
 
     public String getSpecies() {
         return species;
@@ -61,7 +62,7 @@ public class Pet {
         System.out.println("I am eating!");
     }
     void respond () {
-        System.out.printf("Hi owner! I'm %s! I'm bored!", this.nickname);
+        System.out.printf("Hi owner! I'm %s! I'm bored!\n", this.nickname);
     }
     void foul() {
         System.out.println("I need to cover my tracks well...");
@@ -71,9 +72,21 @@ public class Pet {
     public String toString() {
         return species + "{" +
                 "nickname='" + nickname + '\'' +
-                ", age=" + age +
-                ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
+                (age == 0 ? "" : ", age=" + age) +
+                (trickLevel == 0 ? "" : ", trickLevel=" + trickLevel) +
+                (habits == null ? "" : ", habits=" + Arrays.toString(habits)) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Pet pet = (Pet) o;
+        return getAge() == pet.getAge() && getTrickLevel() == pet.getTrickLevel() && Objects.equals(getSpecies(), pet.getSpecies()) && Objects.equals(getNickname(), pet.getNickname());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSpecies(), getNickname(), getAge(), getTrickLevel());
     }
 }

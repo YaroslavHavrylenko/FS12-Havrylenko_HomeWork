@@ -1,6 +1,7 @@
 package HW4;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Family {
     private Human mother;
@@ -53,22 +54,45 @@ public class Family {
         childrenHelper[this.children.length] = child;
         this.children = childrenHelper;
     }
-    public void deleteChild (int index) {
-        if (index < 0 || index > children.length) {
-            System.out.printf("Children with index - %d doesn't exist!\n", index);
+    public boolean deleteChild (int index) {
+        if (index < 0 || index >= children.length) {
+            System.out.printf("Children with index - %d out of range!\n", index);
+            return false;
         } else {
+            int n = 0;
             Human[] childrenHelper = new Human[children.length - 1];
             for (int i = 0; i < childrenHelper.length; i++){
-                if (!(i == index)){
-                    childrenHelper[i] = children[i];
+                if (i == index){
+                    childrenHelper[i] = children[++n];
                 } else {
-                    childrenHelper[i] = children[++i];
+                    childrenHelper[i] = children[n++];
                 }
-                childrenHelper[i] = children[i == index? ++i: i];
             }
-
+            children = childrenHelper;
+            return true;
         }
+    }
+//    public boolean deleteChild (Human child) {
+//        int n = 0;
+//        int childrenLength = children.length;
+//        Human[] childrenHelper = new Human[childrenLength - 1];
+//        for (int i = 0 ; i < childrenLength; i++){
+//            if (children[i].equals(child) && children[i].hashCode() == child.hashCode()) {
+//                childrenHelper[i] = children[++n];
+//            } else {
+//                if (n == childrenLength -1){
+//                    System.out.printf("Child %s %s not a member of family!\n", child.getName(), child.getSurname());
+//                    return false;
+//                }
+//                childrenHelper[i] = children[n++];
+//            }
+//        }
+//        children = childrenHelper;
+//        return true;
+//    }
 
+    public int countFamily () {
+        return 2 + children.length;
     }
 
     @Override
@@ -79,5 +103,17 @@ public class Family {
                 ", children=" + (children.length == 0 ? "no children": Arrays.toString(children)) +
                 ", pet=" + (pet == null? "no pet": pet) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return Objects.equals(getMother(), family.getMother()) && Objects.equals(getFather(), family.getFather()) && Objects.deepEquals(getChildren(), family.getChildren());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getMother(), getFather(), Arrays.hashCode(getChildren()));
     }
 }
