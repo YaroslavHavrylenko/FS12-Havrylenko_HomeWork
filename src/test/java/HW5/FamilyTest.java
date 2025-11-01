@@ -56,7 +56,7 @@ public class FamilyTest {
     }
 
     @Test
-    public void testDeleteChildByIndex() {
+    public void testDeleteChildByIndexPositive() {
         Human mother = new Human("Jane", "Karleone", 1954);
         Human father = new Human("Vito", "Karleone", 1954);
         Human child = new Human("Michael", "Karleone", 1977);
@@ -71,7 +71,7 @@ public class FamilyTest {
     }
 
     @Test
-    public void testDeleteChildByWrongIndex() {
+    public void testDeleteChildByIndexNegative() {
         Human mother = new Human("Jane", "Karleone", 1954);
         Human father = new Human("Vito", "Karleone", 1954);
         Human child = new Human("Michael", "Karleone", 1977);
@@ -79,8 +79,8 @@ public class FamilyTest {
         family.addChild(child);
         Human child1 = new Human("Stiven", "Karleone", 1978);
         family.addChild(child1);
-        family.deleteChild(5);
-        Human[] expChildren = new Human[]{child, child1};
+        family.deleteChild(3);
+        Human[] expChildren = new Human[]{child,child1};
         Human[] realChildren = family.getChildren();
         assertArrayEquals(expChildren, realChildren);
     }
@@ -105,7 +105,7 @@ public class FamilyTest {
     }
 
     @Test
-    public void testCountFamily() {
+    public void testCountFamilyPositive() {
         Human mother = new Human("Jane", "Karleone", 1954);
         Human father = new Human("Vito", "Karleone", 1954);
         Human child = new Human("Michael", "Karleone", 1977);
@@ -116,5 +116,19 @@ public class FamilyTest {
         Human child1 = new Human("Stiven", "Karleone", 1978);
         family.addChild(child1);
         assertEquals(4, family.countFamily());
+    }
+
+    @Test
+    public void testCountFamilyNegative() {
+        Human mother = new Human("Jane", "Karleone", 1954);
+        Human father = new Human("Vito", "Karleone", 1954);
+        Human child = new Human("Michael", "Karleone", 1977);
+        Family family = new Family(mother, father);
+        family.addChild(child);
+        assertNotEquals(4, family.countFamily());
+
+        Human child1 = new Human("Stiven", "Karleone", 1978);
+        family.addChild(child1);
+        assertNotEquals(5, family.countFamily());
     }
 }
