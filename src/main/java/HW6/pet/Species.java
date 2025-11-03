@@ -1,25 +1,28 @@
 package HW6.pet;
 
 public enum Species {
-    CAT ("Cat"),
-    DOG ("Dog"),
-    RABBIT ("RABBIT"),
-    RAT ("Rat"),
-    OWL ("Owl");
+    DOMESTICCAT("DomesticCat"),
+    DOG("Dog"),
+    RABBIT("RABBIT"),
+    RAT("Rat"),
+    OWL("Owl"),
+    ROBOCAT("RoboCat"),
+    FISH("Fish"),
+    UNKNOWN("Unknown");
 
-    private final String spice;
 
+    private final String species;
 
-    Species(String spice) {
-        this.spice = spice;
+    Species(String species) {
+        this.species = (species == null) ? "Unknown" : species;
     }
 
-    public String getSpice() {
-        return spice;
+    public String getSpecies() {
+        return species;
     }
 
     @Override
     public String toString() {
-        return spice;
+        return species;
     }
 }

@@ -8,9 +8,6 @@ public class Human {
     private String surname;
     private int age;
     private int iq;
-    //    private Pet pet;
-//    private Human mother;
-//    private Human father;
     private String[][] schedule;
     private Family family;
 
@@ -38,9 +35,6 @@ public class Human {
         if (iq < 0) {
             this.iq = 0;
         } else this.iq = Math.min(iq, 100);
-//        this.pet = pet;
-//        this.father = father;
-//        this.mother = mother;
         this.schedule = schedule;
     }
 
@@ -81,27 +75,6 @@ public class Human {
         } else this.iq = Math.min(iq, 100);
     }
 
-//    public Pet getPet() {
-//        return pet;
-//    }
-//    public void setPet(Pet pet) {
-//        this.pet = pet;
-//    }
-
-//    public Human getMother() {
-//        return mother;
-//    }
-//    public void setMother(Human mother) {
-//        this.mother = mother;
-//    }
-
-//    public Human getFather() {
-//        return father;
-//    }
-//    public void setFather(Human father) {
-//        this.father = father;
-//    }
-
     public String[][] getSchedule() {
         return schedule;
     }
@@ -123,7 +96,7 @@ public class Human {
     }
 
     void describePet() {
-        System.out.printf("I have a %s, it is %d year(s) old, it is %s!\n", this.getFamily().getPet().getSpecies(), this.getFamily().getPet().getAge(), this.getFamily().getPet().getTrickLevel() > 50 ? "too tricky" : "almost not tricky");
+        System.out.printf("I have a %s, it is %d year(s) old, it is %s!\n", this.getFamily().getPet().getNickname(), this.getFamily().getPet().getAge(), this.getFamily().getPet().getTrickLevel() > 50 ? "too tricky" : "almost not tricky");
     }
 
     public boolean feedPet(boolean isTimeToEat) {
@@ -150,9 +123,6 @@ public class Human {
                 ", year=" + age +
                 (iq == 0 ? "" : (", iq=" + iq)) +
                 (schedule == null ? "" : ", schedule=" + Arrays.deepToString(schedule)) +
-//                ", mother=" + this.getFamily().getMother() +
-//                ", father=" + this.getFamily().getFather() +
-//                ", pet=" + this.getFamily().getPet() +
                 '}';
     }
 

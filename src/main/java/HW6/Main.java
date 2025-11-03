@@ -1,7 +1,8 @@
 package HW6;
 
-import HW6.pet.Pet;
-import HW6.pet.Species;
+import HW6.pet.Dog;
+import HW6.pet.DomesticCat;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +16,7 @@ public class Main {
         Family family1 = new Family(woman1, man1);
         System.out.println(family1);
         woman1.setSchedule(schedule1);
-        Pet cat = new Pet(Species.CAT, "Murzik");
+        DomesticCat cat = new DomesticCat( "Murzik");
         cat.setAge(1);
         family1.setPet(cat);
         System.out.println(family1);
@@ -26,7 +27,7 @@ public class Main {
         family1.addChild(child11);
         System.out.println(family1);
         family1.getFather().greetPet();
-        family1.getPet().foul();
+        ((DomesticCat) family1.getPet()).foul();
         family1.getPet().setTrickLevel(50);
         man1.feedPet(false);
 
@@ -34,7 +35,7 @@ public class Main {
         Human man2 = new Human("John", "Travolta",52,48, schedule2);
         Human woman2 = new Human("Silvia", "Karson",48, 68,schedule1);
         Family family2 = new Family(woman2,man2);
-        Pet dog = new Pet(Species.DOG, "Rex", 2, 45, new String[]{"walk", "eat", "sleep"});
+        Dog dog = new Dog( "Rex", 2, 45, new String[]{"walk", "eat", "sleep"});
         family2.setPet(dog);
         System.out.println(family2);
         Human child2 = new Human("Kristine","Travolta", 2, 68);
