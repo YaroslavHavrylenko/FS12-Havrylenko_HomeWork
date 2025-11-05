@@ -1,6 +1,6 @@
 package HW6.human;
 
-public class Man extends Human {
+public final class Man extends Human {
     public Man(String name, String surname, int age) {
         super(name, surname, age);
     }
@@ -17,12 +17,11 @@ public class Man extends Human {
     }
 
     @Override
-    void greetPet() {
+    public void greetPet() {
         System.out.printf("Hi, %s! You are too witty!\n", this.getFamily().getPet().getNickname());
     }
 
     void repair () {
         System.out.println("My car is ready to run again!");
     }
-
 }

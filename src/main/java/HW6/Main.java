@@ -40,6 +40,9 @@ public class Main {
         Family family2 = new Family(woman2,man2);
         Dog dog = new Dog( "Rex", 2, 45, new String[]{"walk", "eat", "sleep"});
         family2.setPet(dog);
+        family2.getMother().describePet();
+        family2.getMother().greetPet();
+        family2.getFather().greetPet();
         System.out.println(family2);
         Human child2 = new Human("Kristine","Travolta", 2, 68);
         family2.addChild(child2);
@@ -50,5 +53,8 @@ public class Main {
         family2.deleteChild(child2);
         System.out.printf("Family 2 count %d members\n", family2.countFamily());
         System.out.println(family2);
+        System.out.println(family2.bornChild());
+        System.out.println(family2);
+
     }
 }

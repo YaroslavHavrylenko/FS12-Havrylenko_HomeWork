@@ -1,14 +1,16 @@
 package HW6;
 
 import HW6.human.Human;
+import HW6.human.HumanCreator;
 import HW6.human.Man;
 import HW6.human.Woman;
 import HW6.pet.Pet;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
-public class Family {
+public class Family implements HumanCreator {
     private Woman mother;
     private Man father;
     private Human[] children;
@@ -22,7 +24,7 @@ public class Family {
         this.father.setFamily(this);
     }
 
-    public Human getMother() {
+    public Woman getMother() {
         return mother;
     }
 
@@ -30,7 +32,7 @@ public class Family {
         this.mother = mother;
     }
 
-    public Human getFather() {
+    public Man getFather() {
         return father;
     }
 
@@ -101,6 +103,20 @@ public class Family {
         return true;
     }
 
+    @Override
+    public Human bornChild() {
+        double rnd = Math.random();
+        if (rnd < 0.5) {
+            Woman girl = new Woman(generateName(rnd), this.getFather().getSurname(), 0, (this.getFather().getIq() + this.getMother().getIq())/2);
+            addChild(girl);
+            return girl;
+        } else {
+            Man boy = new Man(generateName(rnd), this.getFather().getSurname(), 0, (this.getFather().getIq() + this.getMother().getIq()/2));
+            addChild(boy);
+            return boy;
+        }
+    }
+
     public int countFamily() {
         return 2 + children.length;
     }
@@ -125,5 +141,13 @@ public class Family {
     @Override
     public int hashCode() {
         return Objects.hash(getMother(), getFather(), Arrays.hashCode(getChildren()));
+    }
+
+    private String generateName(double rnd) {
+        String[] girlNames = {"Helen", "Silvia", "Sharon", "Ginger", "Lara", "Jessica", "Sara", "Eva"};
+        String[] boyNames = {"John", "Romeo", "Kirk", "Robert", "David", "Lionel", "Bob", "Alan"};
+        if (rnd < 0.5) {
+            return girlNames[(int) (Math.random()*girlNames.length)];
+        } else return boyNames[(int) (Math.random()*boyNames.length)];
     }
 }

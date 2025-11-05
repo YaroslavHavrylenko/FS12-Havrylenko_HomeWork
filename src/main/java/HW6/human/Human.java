@@ -91,11 +91,11 @@ public class Human {
         this.family = family;
     }
 
-    void greetPet() {
+    public void greetPet() {
         System.out.printf("Hi, %s\n", this.getFamily().getPet().getNickname());
     }
 
-    void describePet() {
+    public void describePet() {
         System.out.printf("I have a %s, it is %d year(s) old, it is %s!\n", this.getFamily().getPet().getNickname(), this.getFamily().getPet().getAge(), this.getFamily().getPet().getTrickLevel() > 50 ? "too tricky" : "almost not tricky");
     }
 
@@ -137,4 +137,5 @@ public class Human {
     public int hashCode() {
         return Objects.hash(getName(), getSurname(), getAge(), getIq());
     }
+
 }
