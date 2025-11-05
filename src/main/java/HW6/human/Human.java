@@ -1,4 +1,6 @@
-package HW6;
+package HW6.human;
+
+import HW6.Family;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -24,8 +26,6 @@ public class Human {
         if (iq < 0) {
             this.iq = 0;
         } else this.iq = Math.min(iq, 100);
-//        this.father = father;
-//        this.mother = mother;
     }
 
     public Human(String name, String surname, int age, int iq, String[][] schedule) {

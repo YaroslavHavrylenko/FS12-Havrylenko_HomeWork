@@ -1,5 +1,8 @@
 package HW6;
 
+import HW6.human.Human;
+import HW6.human.Man;
+import HW6.human.Woman;
 import HW6.pet.Dog;
 import HW6.pet.DomesticCat;
 
@@ -10,9 +13,9 @@ public class Main {
         String[][] schedule2 = {{DayOfWeek.FRIDAY.name().toLowerCase(), "Do homework"}, {DayOfWeek.SATURDAY.name().toLowerCase(), "Go to theatre"}};
 
 //        --- FAMILY 1 ---
-        Human man1 = new Human("Michael", "Jackson", 45);
+        Man man1 = new Man("Michael", "Jackson", 45);
         man1.setIq(68);
-        Human woman1 = new Human("Sandra", "Buloc", 43);
+        Woman woman1 = new Woman("Sandra", "Buloc", 43);
         Family family1 = new Family(woman1, man1);
         System.out.println(family1);
         woman1.setSchedule(schedule1);
@@ -20,10 +23,10 @@ public class Main {
         cat.setAge(1);
         family1.setPet(cat);
         System.out.println(family1);
-        Human child1 = new Human("John", "Jackson",1);
+        Man child1 = new Man("John", "Jackson",1);
         family1.addChild(child1);
         System.out.println(family1);
-        Human child11 = new Human("Rosa", "Jackson", 2, 32);
+        Woman child11 = new Woman("Rosa", "Jackson", 2, 32);
         family1.addChild(child11);
         System.out.println(family1);
         family1.getFather().greetPet();
@@ -32,8 +35,8 @@ public class Main {
         man1.feedPet(false);
 
         // --- FAMILY 2 ---
-        Human man2 = new Human("John", "Travolta",52,48, schedule2);
-        Human woman2 = new Human("Silvia", "Karson",48, 68,schedule1);
+        Man man2 = new Man("John", "Travolta",52,48, schedule2);
+        Woman woman2 = new Woman("Silvia", "Karson",48, 68,schedule1);
         Family family2 = new Family(woman2,man2);
         Dog dog = new Dog( "Rex", 2, 45, new String[]{"walk", "eat", "sleep"});
         family2.setPet(dog);

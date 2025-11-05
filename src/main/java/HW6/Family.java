@@ -1,17 +1,20 @@
 package HW6;
 
+import HW6.human.Human;
+import HW6.human.Man;
+import HW6.human.Woman;
 import HW6.pet.Pet;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public class Family {
-    private Human mother;
-    private Human father;
+    private Woman mother;
+    private Man father;
     private Human[] children;
     private Pet pet;
 
-    public Family(Human mother, Human father) {
+    public Family(Woman mother, Man father) {
         this.mother = mother;
         this.father = father;
         this.children = new Human[0];
@@ -23,7 +26,7 @@ public class Family {
         return mother;
     }
 
-    public void setMother(Human mother) {
+    public void setMother(Woman mother) {
         this.mother = mother;
     }
 
@@ -31,19 +34,13 @@ public class Family {
         return father;
     }
 
-    public void setFather(Human father) {
+    public void setFather(Man father) {
         this.father = father;
     }
 
     public Human[] getChildren() {
         return children;
     }
-//    public void setChildren(Human[] children) {
-//        this.children = children;
-//        for (int i = 0; i < children.length; i++){
-//            this.children[i].setFamily(this);
-//        }
-//    }
 
     public Pet getPet() {
         return pet;
