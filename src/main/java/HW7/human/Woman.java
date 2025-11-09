@@ -1,5 +1,9 @@
 package HW7.human;
 
+import HW7.pet.Pet;
+
+import java.util.HashMap;
+
 public final class Woman extends Human {
     public Woman(String name, String surname, int age) {
         super(name, surname, age);
@@ -8,7 +12,7 @@ public final class Woman extends Human {
     public Woman() {
     }
 
-    public Woman(String name, String surname, int age, int iq, String[][] schedule) {
+    public Woman(String name, String surname, int age, int iq, HashMap<String, String> schedule) {
         super(name, surname, age, iq, schedule);
     }
 
@@ -17,8 +21,8 @@ public final class Woman extends Human {
     }
 
     @Override
-    public void greetPet() {
-        System.out.printf("Hi, %s! You are so nice!\n", this.getFamily().getPet().getNickname());
+    public void greetPet(Pet pet) {
+        System.out.printf("Hi, %s! You are so nice!\n", this.getFamily().getPet(pet).getNickname());
     }
 
     void makeup () {

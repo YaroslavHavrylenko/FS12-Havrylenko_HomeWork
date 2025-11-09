@@ -1,8 +1,10 @@
 package HW7.human;
 
 import HW7.Family;
+import HW7.pet.Pet;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
@@ -10,7 +12,7 @@ public class Human {
     private String surname;
     private int age;
     private int iq;
-    private String[][] schedule;
+    private HashMap<String, String> schedule;
     private Family family;
 
     public Human(String name, String surname, int age) {
@@ -28,7 +30,7 @@ public class Human {
         } else this.iq = Math.min(iq, 100);
     }
 
-    public Human(String name, String surname, int age, int iq, String[][] schedule) {
+    public Human(String name, String surname, int age, int iq, HashMap<String, String> schedule) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -75,11 +77,11 @@ public class Human {
         } else this.iq = Math.min(iq, 100);
     }
 
-    public String[][] getSchedule() {
+    public HashMap<String, String> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(HashMap<String, String> schedule) {
         this.schedule = schedule;
     }
 
@@ -91,25 +93,25 @@ public class Human {
         this.family = family;
     }
 
-    public void greetPet() {
-        System.out.printf("Hi, %s\n", this.getFamily().getPet().getNickname());
+    public void greetPet(Pet pet) {
+        System.out.printf("Hi, %s\n", this.getFamily().getPet(pet).getNickname());
     }
 
-    public void describePet() {
-        System.out.printf("I have a %s, it is %d year(s) old, it is %s!\n", this.getFamily().getPet().getNickname(), this.getFamily().getPet().getAge(), this.getFamily().getPet().getTrickLevel() > 50 ? "too tricky" : "almost not tricky");
+    public void describePet(Pet pet) {
+        System.out.printf("I have a %s, it is %d year(s) old, it is %s!\n", this.getFamily().getPet(pet).getNickname(), this.getFamily().getPet(pet).getAge(), this.getFamily().getPet(pet).getTrickLevel() > 50 ? "too tricky" : "almost not tricky");
     }
 
-    public boolean feedPet(boolean isTimeToEat) {
+    public boolean feedPet(boolean isTimeToEat, Pet pet) {
         if (isTimeToEat) {
-            System.out.printf("Hm... I feed my %s!\n", family.getPet().getNickname());
+            System.out.printf("Hm... I feed my %s!\n", pet.getNickname());
             return true;
         } else {
             int comparisonTrickLevel = (int) (Math.random() * (100 + 1));
-            if (family.getPet().getTrickLevel() >= comparisonTrickLevel) {
-                System.out.printf("Hm... I feed my %s!\n", family.getPet().getNickname());
+            if (pet.getTrickLevel() >= comparisonTrickLevel) {
+                System.out.printf("Hm... I feed my %s!\n", pet.getNickname());
                 return true;
             } else {
-                System.out.printf("I think, %s not hangry!\n", family.getPet().getNickname());
+                System.out.printf("I think, %s not hangry!\n", pet.getNickname());
                 return false;
             }
         }
@@ -122,7 +124,7 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + age +
                 (iq == 0 ? "" : (", iq=" + iq)) +
-                (schedule == null ? "" : ", schedule=" + Arrays.deepToString(schedule)) +
+                (schedule == null ? "" : ", schedule=" + schedule) +
                 '}';
     }
 
