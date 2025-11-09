@@ -1,6 +1,7 @@
 package HW4;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Family {
@@ -72,24 +73,19 @@ public class Family {
             return true;
         }
     }
-//    public boolean deleteChild (Human child) {
-//        int n = 0;
-//        int childrenLength = children.length;
-//        Human[] childrenHelper = new Human[childrenLength - 1];
-//        for (int i = 0 ; i < childrenLength; i++){
-//            if (children[i].equals(child) && children[i].hashCode() == child.hashCode()) {
-//                childrenHelper[i] = children[++n];
-//            } else {
-//                if (n == childrenLength -1){
-//                    System.out.printf("Child %s %s not a member of family!\n", child.getName(), child.getSurname());
-//                    return false;
-//                }
-//                childrenHelper[i] = children[n++];
-//            }
-//        }
-//        children = childrenHelper;
-//        return true;
-//    }
+    public Human[] deleteChild(Human child) {
+        child.setFamily(null);
+
+        Human[] withoutChild = new Human[this.children.length - 1];
+        int n = 0;
+        for (int i = 0; i <this.children.length; i++){
+            if (!this.children[i].equals(child)) {
+                withoutChild[n] = this.children[i];
+                n++; }
+        }
+        this.children = withoutChild;
+        return this.children;
+    }
 
     public int countFamily () {
         return 2 + children.length;
