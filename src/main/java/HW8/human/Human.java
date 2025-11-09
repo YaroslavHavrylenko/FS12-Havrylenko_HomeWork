@@ -1,7 +1,7 @@
-package HW7.human;
+package HW8.human;
 
-import HW7.Family;
-import HW7.pet.Pet;
+import HW8.Family;
+import HW8.pet.Pet;
 
 import java.util.HashMap;
 import java.util.Objects;

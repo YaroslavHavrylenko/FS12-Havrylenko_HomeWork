@@ -1,4 +1,4 @@
-package HW7.pet;
+package HW8.pet;
 
 public enum Species {
     DOMESTICCAT("DomesticCat"),

@@ -1,4 +1,4 @@
-package HW7;
+package HW8;
 
 public enum DayOfWeek {
     SUNDAY("Sunday"),
@@ -18,6 +18,4 @@ public enum DayOfWeek {
     public String getTitle() {
         return title;
     }
-
-
 }

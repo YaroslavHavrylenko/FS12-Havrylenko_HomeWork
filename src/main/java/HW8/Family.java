@@ -1,10 +1,10 @@
-package HW7;
+package HW8;
 
-import HW7.human.Human;
-import HW7.human.HumanCreator;
-import HW7.human.Man;
-import HW7.human.Woman;
-import HW7.pet.Pet;
+import HW8.human.Human;
+import HW8.human.HumanCreator;
+import HW8.human.Man;
+import HW8.human.Woman;
+import HW8.pet.Pet;
 
 import java.util.*;
 

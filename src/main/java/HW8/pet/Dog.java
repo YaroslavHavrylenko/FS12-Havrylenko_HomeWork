@@ -1,6 +1,5 @@
-package HW7.pet;
+package HW8.pet;
 
-import java.util.Arrays;
 import java.util.HashSet;
 
 public class Dog extends Pet implements Foul{

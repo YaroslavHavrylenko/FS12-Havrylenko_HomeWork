@@ -1,9 +1,9 @@
-package HW7;
+package HW8;
 
-import HW7.human.Human;
-import HW7.human.Man;
-import HW7.human.Woman;
-import HW7.pet.Dog;
+import HW8.human.Human;
+import HW8.human.Man;
+import HW8.human.Woman;
+import HW8.pet.Dog;
 import org.junit.Test;
 
 import java.util.*;
