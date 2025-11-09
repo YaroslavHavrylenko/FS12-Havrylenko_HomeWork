@@ -6,7 +6,6 @@ import HW7.human.Woman;
 import HW7.pet.Dog;
 import HW7.pet.DomesticCat;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 

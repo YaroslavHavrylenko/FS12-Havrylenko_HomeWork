@@ -81,12 +81,13 @@ public class Family implements HumanCreator {
 
     public boolean deleteChild(Human child) {
         if (children.contains(child)) {
-            System.out.printf("Children %s %s not exist at this family!\n", child.getName(), child.getSurname());
-            return false;
-        } else {
             child.setFamily(null);
             children.remove(child);
             return true;
+        } else {
+            System.out.printf("Children %s %s not exist at this family!\n", child.getName(), child.getSurname());
+            return false;
+
         }
     }
 
