@@ -3,7 +3,6 @@ package HW7.human;
 import HW7.Family;
 import HW7.pet.Pet;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 
