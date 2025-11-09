@@ -6,6 +6,8 @@ import HW7.human.Woman;
 import HW7.pet.Dog;
 import HW7.pet.DomesticCat;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,7 +40,11 @@ public class Main {
         Man man2 = new Man("John", "Travolta",52,48, schedule2);
         Woman woman2 = new Woman("Silvia", "Karson",48, 68,schedule1);
         Family family2 = new Family(woman2,man2);
-        Dog dog = new Dog( "Rex", 2, 45, new String[]{"walk", "eat", "sleep"});
+        HashSet<String> dogHabits= new HashSet<>();
+        dogHabits.add("walk");
+        dogHabits.add("eat");
+        dogHabits.add("sleep");
+        Dog dog = new Dog( "Rex", 2, 45, dogHabits);
         family2.setPet(dog);
         family2.getMother().describePet();
         family2.getMother().greetPet();

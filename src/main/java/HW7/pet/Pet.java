@@ -1,18 +1,19 @@
 package HW7.pet;
 
+import java.util.HashSet;
 import java.util.Objects;
 
 public abstract class Pet {
     private String nickname;
     private int age;
     private int trickLevel;
-    private String[] habits;
+    private HashSet<String> habits;
 
     public Pet(String nickname) {
         this.nickname = nickname;
     }
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(String nickname, int age, int trickLevel, HashSet<String> habits) {
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -43,10 +44,10 @@ public abstract class Pet {
         this.trickLevel = trickLevel;
     }
 
-    public String[] getHabits() {
+    public HashSet<String> getHabits() {
         return habits;
     }
-    public void setHabits(String[] habits) {
+    public void setHabits(HashSet<String> habits) {
         this.habits = habits;
     }
 

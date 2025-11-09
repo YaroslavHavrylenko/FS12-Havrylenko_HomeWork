@@ -1,6 +1,7 @@
 package HW7.pet;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class RoboCat extends Pet {
     private Species species;
@@ -10,7 +11,7 @@ public class RoboCat extends Pet {
         this.species = Species.ROBOCAT;
     }
 
-    public RoboCat (String nickname, int age, int trickLevel, String[] habits) {
+    public RoboCat (String nickname, int age, int trickLevel, HashSet<String> habits) {
         super(nickname, age, trickLevel, habits);
         this.species = Species.ROBOCAT;
     }
@@ -34,7 +35,7 @@ public class RoboCat extends Pet {
                 "nickname='" + this.getNickname() + '\'' +
                 (this.getAge() == 0 ? "" : ", age=" + this.getAge()) +
                 (this.getTrickLevel() == 0 ? "" : ", trickLevel=" + this.getTrickLevel()) +
-                (this.getHabits() == null ? "" : ", habits=" + Arrays.toString(this.getHabits())) +
+                (this.getHabits() == null ? "" : ", habits=" + this.getHabits()) +
                 '}';
     }
 }
