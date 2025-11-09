@@ -3,6 +3,7 @@ package HW7.human;
 import HW7.Family;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
@@ -10,7 +11,7 @@ public class Human {
     private String surname;
     private int age;
     private int iq;
-    private String[][] schedule;
+    private HashMap<String, String> schedule;
     private Family family;
 
     public Human(String name, String surname, int age) {
@@ -28,7 +29,7 @@ public class Human {
         } else this.iq = Math.min(iq, 100);
     }
 
-    public Human(String name, String surname, int age, int iq, String[][] schedule) {
+    public Human(String name, String surname, int age, int iq, HashMap<String, String> schedule) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -75,11 +76,11 @@ public class Human {
         } else this.iq = Math.min(iq, 100);
     }
 
-    public String[][] getSchedule() {
+    public HashMap<String, String> getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String[][] schedule) {
+    public void setSchedule(HashMap<String, String> schedule) {
         this.schedule = schedule;
     }
 
@@ -122,7 +123,7 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + age +
                 (iq == 0 ? "" : (", iq=" + iq)) +
-                (schedule == null ? "" : ", schedule=" + Arrays.deepToString(schedule)) +
+                (schedule == null ? "" : ", schedule=" + schedule) +
                 '}';
     }
 

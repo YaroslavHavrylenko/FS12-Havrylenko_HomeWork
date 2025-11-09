@@ -1,5 +1,7 @@
 package HW7.human;
 
+import java.util.HashMap;
+
 public final class Woman extends Human {
     public Woman(String name, String surname, int age) {
         super(name, surname, age);
@@ -8,7 +10,7 @@ public final class Woman extends Human {
     public Woman() {
     }
 
-    public Woman(String name, String surname, int age, int iq, String[][] schedule) {
+    public Woman(String name, String surname, int age, int iq, HashMap<String, String> schedule) {
         super(name, surname, age, iq, schedule);
     }
 
