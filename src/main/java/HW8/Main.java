@@ -6,6 +6,7 @@ import HW8.human.Woman;
 import HW8.pet.Dog;
 import HW8.pet.DomesticCat;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -19,9 +20,9 @@ public class Main {
         schedule2.put(DayOfWeek.SATURDAY.getTitle(), "Go to theatre");
 
 //        --- FAMILY 1 ---
-        Man man1 = new Man("Michael", "Jackson", 45);
+        Man man1 = new Man("Michael", "Jackson", LocalDate.of(1981, 10, 25));
         man1.setIq(68);
-        Woman woman1 = new Woman("Sandra", "Buloc", 43);
+        Woman woman1 = new Woman("Sandra", "Buloc", LocalDate.of(1982, 8, 13));
         Family family1 = new Family(woman1, man1);
         System.out.println(family1);
         woman1.setSchedule(schedule1);
@@ -29,10 +30,10 @@ public class Main {
         cat.setAge(1);
         family1.addPet(cat);
         System.out.println(family1);
-        Man child1 = new Man("John", "Jackson", 1);
+        Man child1 = new Man("John", "Jackson", LocalDate.of(2024, 11, 20));
         family1.addChild(child1);
         System.out.println(family1);
-        Woman child11 = new Woman("Rosa", "Jackson", 2, 32);
+        Woman child11 = new Woman("Rosa", "Jackson", LocalDate.of(2023, 7, 5), 32);
         family1.addChild(child11);
         System.out.println(family1);
         family1.getFather().greetPet(cat);
@@ -41,8 +42,8 @@ public class Main {
         man1.feedPet(false, cat);
 
         // --- FAMILY 2 ---
-        Man man2 = new Man("John", "Travolta", 52, 48, schedule2);
-        Woman woman2 = new Woman("Silvia", "Karson", 48, 68, schedule1);
+        Man man2 = new Man("John", "Travolta", LocalDate.of(1973, 2, 18), 48, schedule2);
+        Woman woman2 = new Woman("Silvia", "Karson", LocalDate.of(1977, 11, 2), 68, schedule1);
         Family family2 = new Family(woman2, man2);
         HashSet<String> dogHabits = new HashSet<>();
         dogHabits.add("walk");
@@ -54,9 +55,9 @@ public class Main {
         family2.getMother().greetPet(dog);
         family2.getFather().greetPet(dog);
         System.out.println(family2);
-        Human child2 = new Human("Kristine", "Travolta", 2, 68);
+        Human child2 = new Human("Kristine", "Travolta", LocalDate.of(2023, 7, 18), 68);
         family2.addChild(child2);
-        Human child21 = new Human("Rocky", "Travolta", 1, 56);
+        Human child21 = new Human("Rocky", "Travolta", LocalDate.of(2024, 5, 31), 56);
         family2.addChild(child21);
         System.out.println(family2);
         System.out.printf("Family 2 count %d members\n", family2.countFamily());
