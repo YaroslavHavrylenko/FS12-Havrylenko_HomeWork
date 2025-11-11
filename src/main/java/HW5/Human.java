@@ -8,9 +8,6 @@ public class Human {
     private String surname;
     private int age;
     private int iq;
-    //    private Pet pet;
-//    private Human mother;
-//    private Human father;
     private String[][] schedule;
     private Family family;
 
@@ -24,23 +21,14 @@ public class Human {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        if (iq < 0) {
-            this.iq = 0;
-        } else this.iq = Math.min(iq, 100);
-//        this.father = father;
-//        this.mother = mother;
+        this.iq = iqVerification(iq);
     }
 
     public Human(String name, String surname, int age, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        if (iq < 0) {
-            this.iq = 0;
-        } else this.iq = Math.min(iq, 100);
-//        this.pet = pet;
-//        this.father = father;
-//        this.mother = mother;
+        this.iq = iqVerification(iq);
         this.schedule = schedule;
     }
 
@@ -76,31 +64,8 @@ public class Human {
     }
 
     public void setIq(int iq) {
-        if (iq < 0) {
-            this.iq = 0;
-        } else this.iq = Math.min(iq, 100);
+        this.iq = iqVerification(iq);
     }
-
-//    public Pet getPet() {
-//        return pet;
-//    }
-//    public void setPet(Pet pet) {
-//        this.pet = pet;
-//    }
-
-//    public Human getMother() {
-//        return mother;
-//    }
-//    public void setMother(Human mother) {
-//        this.mother = mother;
-//    }
-
-//    public Human getFather() {
-//        return father;
-//    }
-//    public void setFather(Human father) {
-//        this.father = father;
-//    }
 
     public String[][] getSchedule() {
         return schedule;
@@ -150,9 +115,6 @@ public class Human {
                 ", year=" + age +
                 (iq == 0 ? "" : (", iq=" + iq)) +
                 (schedule == null ? "" : ", schedule=" + Arrays.deepToString(schedule)) +
-//                ", mother=" + this.getFamily().getMother() +
-//                ", father=" + this.getFamily().getFather() +
-//                ", pet=" + this.getFamily().getPet() +
                 '}';
     }
 
@@ -166,5 +128,11 @@ public class Human {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getSurname(), getAge(), getIq());
+    }
+
+    private int iqVerification(int iq) {
+        if (iq < 0) {
+            return this.iq = 0;
+        } else return this.iq = Math.min(iq, 100);
     }
 }

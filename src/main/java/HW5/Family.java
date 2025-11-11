@@ -82,7 +82,7 @@ public class Family {
         int index = -1;
 
         for (int i = 0; i < children.length; i++) {
-            if (children[i].hashCode() == child.hashCode() && children[i].equals(child)) {
+            if (children[i].equals(child)) {
                 index = i;
                 break;
             }

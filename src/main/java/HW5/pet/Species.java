@@ -9,7 +9,6 @@ public enum Species {
 
     private final String spice;
 
-
     Species(String spice) {
         this.spice = spice;
     }
