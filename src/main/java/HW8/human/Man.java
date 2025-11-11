@@ -2,19 +2,20 @@ package HW8.human;
 
 import HW8.pet.Pet;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 public final class Man extends Human {
-    public Man(String name, String surname, int age) {
-        super(name, surname, age);
+    public Man(String name, String surname, LocalDate birthDate) {
+        super(name, surname, birthDate);
     }
 
-    public Man(String name, String surname, int age, int iq) {
-        super(name, surname, age, iq);
+    public Man(String name, String surname, LocalDate birthDate, int iq) {
+        super(name, surname, birthDate, iq);
     }
 
-    public Man(String name, String surname, int age, int iq, HashMap<String, String> schedule) {
-        super(name, surname, age, iq, schedule);
+    public Man(String name, String surname, LocalDate birthDate, int iq, HashMap<String, String> schedule) {
+        super(name, surname, birthDate, iq, schedule);
     }
 
     public Man() {

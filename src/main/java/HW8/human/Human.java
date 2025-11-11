@@ -3,39 +3,36 @@ package HW8.human;
 import HW8.Family;
 import HW8.pet.Pet;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
     private String name;
     private String surname;
-    private int age;
+    private LocalDate birthDate ;
     private int iq;
     private HashMap<String, String> schedule;
     private Family family;
 
-    public Human(String name, String surname, int age) {
+    public Human(String name, String surname, LocalDate birthDate) {
         this.name = name;
         this.surname = surname;
-        this.age = age;
+        this.birthDate = birthDate;
     }
 
-    public Human(String name, String surname, int age, int iq) {
+    public Human(String name, String surname, LocalDate birthDate, int iq) {
         this.name = name;
         this.surname = surname;
-        this.age = age;
-        if (iq < 0) {
-            this.iq = 0;
-        } else this.iq = Math.min(iq, 100);
+        this.birthDate = birthDate;
+        this.iq = iqVerification(iq);
     }
 
-    public Human(String name, String surname, int age, int iq, HashMap<String, String> schedule) {
+    public Human(String name, String surname, LocalDate birthDate, int iq, HashMap<String, String> schedule) {
         this.name = name;
         this.surname = surname;
-        this.age = age;
-        if (iq < 0) {
-            this.iq = 0;
-        } else this.iq = Math.min(iq, 100);
+        this.birthDate = birthDate;
+        this.iq = iqVerification(iq);
         this.schedule = schedule;
     }
 
@@ -58,22 +55,28 @@ public class Human {
         this.surname = surname;
     }
 
-    public int getAge() {
-        return age;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
+
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
 
     public int getIq() {
         return iq;
     }
 
     public void setIq(int iq) {
-        if (iq < 0) {
-            this.iq = 0;
-        } else this.iq = Math.min(iq, 100);
+        this.iq = iqVerification(iq);
     }
 
     public HashMap<String, String> getSchedule() {
@@ -121,7 +124,7 @@ public class Human {
         return "Human{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", year=" + age +
+                ", birthDate =" + birthDate  +
                 (iq == 0 ? "" : (", iq=" + iq)) +
                 (schedule == null ? "" : ", schedule=" + schedule) +
                 '}';
@@ -131,12 +134,17 @@ public class Human {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return getAge() == human.getAge() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname());
+        return getBirthDate() == human.getBirthDate() && getIq() == human.getIq() && Objects.equals(getName(), human.getName()) && Objects.equals(getSurname(), human.getSurname());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getSurname(), getAge(), getIq());
+        return Objects.hash(getName(), getSurname(), getBirthDate(), getIq());
     }
 
+    private int iqVerification (int iq) {
+        if (iq < 0) {
+            return this.iq = 0;
+        } else return this.iq = Math.min(iq, 100);
+    }
 }
