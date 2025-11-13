@@ -6,6 +6,7 @@ import HW8.human.Man;
 import HW8.human.Woman;
 import HW8.pet.Pet;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Family implements HumanCreator {
@@ -95,11 +96,11 @@ public class Family implements HumanCreator {
     public Human bornChild() {
         double rnd = Math.random();
         if (rnd < 0.5) {
-            Woman girl = new Woman(generateName(rnd), this.getFather().getSurname(), 0, (this.getFather().getIq() + this.getMother().getIq()) / 2);
+            Woman girl = new Woman(generateName(rnd), this.getFather().getSurname(), LocalDate.now(), (this.getFather().getIq() + this.getMother().getIq()) / 2);
             addChild(girl);
             return girl;
         } else {
-            Man boy = new Man(generateName(rnd), this.getFather().getSurname(), 0, (this.getFather().getIq() + this.getMother().getIq() / 2));
+            Man boy = new Man(generateName(rnd), this.getFather().getSurname(), LocalDate.now(), (this.getFather().getIq() + this.getMother().getIq() / 2));
             addChild(boy);
             return boy;
         }

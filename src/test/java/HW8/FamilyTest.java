@@ -4,13 +4,30 @@ import HW8.human.Human;
 import HW8.human.Man;
 import HW8.human.Woman;
 import HW8.pet.Dog;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.Assert.*;
 
 public class FamilyTest {
+    private Family family;
+    private Woman mother;
+    private Man father;
+    private Man child;
+    private Man child1;
+
+    @BeforeEach
+    public void setUp() {
+        mother = new Woman("Jane", "Karleone", LocalDate.of(1954, 10, 27));
+        father = new Man("Vito", "Karleone", LocalDate.of(1954, 4, 16));
+        family = new Family(mother, father);
+        child = new Man("Michael", "Karleone", LocalDate.of(1977, 2, 10));
+        child1 = new Man("Stiven", "Karleone", LocalDate.of(1978, 7, 29));
+    }
+
+
     @Test
     public void testToStringPositive() {
         String expected = "Dog{nickname='Rock', age=5, trickLevel=75, habits=[sleep, eat, drink]}";
@@ -31,12 +48,7 @@ public class FamilyTest {
 
     @Test
     public void testDeleteChildByHumanPositive() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         family.addChild(child);
-        Man child1 = new Man("Stiven", "Karleone", 1978);
         family.addChild(child1);
         family.deleteChild(child);
         System.out.println(family);
@@ -47,14 +59,9 @@ public class FamilyTest {
 
     @Test
     public void testDeleteChildByHumanNegative() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         family.addChild(child);
-        Man child1 = new Man("Stiven", "Karleone", 1978);
         family.addChild(child1);
-        Man strangerChild = new Man("Tom", "Hagen", 1975);
+        Man strangerChild = new Man("Tom", "Hagen", LocalDate.of(1975, 12, 12));
         boolean result = family.deleteChild(strangerChild);
         assertFalse(result);
         List<Human> expectedChildren = new ArrayList<Human>();
@@ -66,12 +73,7 @@ public class FamilyTest {
 
     @Test
     public void testDeleteChildByIndexPositive() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         family.addChild(child);
-        Man child1 = new Man("Stiven", "Karleone", 1978);
         family.addChild(child1);
         family.deleteChild(0);
         List<Human> expChildren = new ArrayList<Human>(Collections.singleton(child1));
@@ -81,12 +83,7 @@ public class FamilyTest {
 
     @Test
     public void testDeleteChildByIndexNegative() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         family.addChild(child);
-        Man child1 = new Man("Stiven", "Karleone", 1978);
         family.addChild(child1);
         family.deleteChild(3);
         List<Human> expChildren = new ArrayList<>(Arrays.asList(child, child1));
@@ -96,16 +93,11 @@ public class FamilyTest {
 
     @Test
     public void testAddChild() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         family.addChild(child);
         List<Human> realChildren = family.getChildren();
         assertEquals(1, realChildren.size());
         assertEquals(child, family.getChildren().get(0));
 
-        Man child1 = new Man("Stiven", "Karleone", 1978);
         family.addChild(child1);
         List<Human> realChildren1 = family.getChildren();
 
@@ -115,27 +107,17 @@ public class FamilyTest {
 
     @Test
     public void testCountFamilyPositive() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         family.addChild(child);
         assertEquals(3, family.countFamily());
 
-        Human child1 = new Human("Stiven", "Karleone", 1978);
         family.addChild(child1);
         assertEquals(4, family.countFamily());
     }
 
     @Test
     public void testCountFamilyNegative() {
-        Woman mother = new Woman("Jane", "Karleone", 1954);
-        Man father = new Man("Vito", "Karleone", 1954);
-        Man child = new Man("Michael", "Karleone", 1977);
-        Family family = new Family(mother, father);
         assertNotEquals(4, family.countFamily());
 
-        Man child1 = new Man("Stiven", "Karleone", 1978);
         family.addChild(child1);
         assertNotEquals(5, family.countFamily());
     }

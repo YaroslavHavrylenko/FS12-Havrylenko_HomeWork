@@ -29,5 +29,4 @@ public final class Woman extends Human {
     void makeup() {
         System.out.println("I look so good!");
     }
-
 }
