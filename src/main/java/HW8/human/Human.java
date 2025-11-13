@@ -4,13 +4,17 @@ import HW8.Family;
 import HW8.pet.Pet;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
     private String name;
     private String surname;
-    private LocalDate birthDate ;
+    private LocalDate birthDate;
+    //    private String birthDateForAdoptChild;
     private int iq;
     private HashMap<String, String> schedule;
     private Family family;
@@ -25,6 +29,13 @@ public class Human {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
+        this.iq = iqVerification(iq);
+    }
+
+    public Human(String name, String surname, String birthDate, int iq) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDateForAdoptChild(birthDate);
         this.iq = iqVerification(iq);
     }
 
@@ -62,14 +73,6 @@ public class Human {
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
-
-//    public int getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(int age) {
-//        this.age = age;
-//    }
 
     public int getIq() {
         return iq;
@@ -119,12 +122,17 @@ public class Human {
         }
     }
 
+    public void describeAge() {
+        Period differenceDate = Period.between(getBirthDate(), LocalDate.now());
+        System.out.printf("%s %s have %d years, %d months and %d days\n", getName(), getSurname(), differenceDate.getYears(), differenceDate.getMonths(), differenceDate.getDays());
+    }
+
     @Override
     public String toString() {
         return "Human{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", birthDate =" + birthDate  +
+                ", birthDate=" + birthdayFormat(birthDate) +
                 (iq == 0 ? "" : (", iq=" + iq)) +
                 (schedule == null ? "" : ", schedule=" + schedule) +
                 '}';
@@ -142,9 +150,19 @@ public class Human {
         return Objects.hash(getName(), getSurname(), getBirthDate(), getIq());
     }
 
-    private int iqVerification (int iq) {
+    private int iqVerification(int iq) {
         if (iq < 0) {
             return this.iq = 0;
         } else return this.iq = Math.min(iq, 100);
+    }
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    private LocalDate birthDateForAdoptChild(String birthDateStr) {
+        return LocalDate.parse(birthDateStr, formatter);
+    }
+
+    private String birthdayFormat(LocalDate birthDate) {
+        return birthDate.format(formatter);
     }
 }

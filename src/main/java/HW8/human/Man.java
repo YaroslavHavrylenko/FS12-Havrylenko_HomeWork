@@ -14,6 +14,10 @@ public final class Man extends Human {
         super(name, surname, birthDate, iq);
     }
 
+    public Man(String name, String surname, String birthDate, int iq)  {
+        super(name, surname, birthDate, iq);
+    }
+
     public Man(String name, String surname, LocalDate birthDate, int iq, HashMap<String, String> schedule) {
         super(name, surname, birthDate, iq, schedule);
     }

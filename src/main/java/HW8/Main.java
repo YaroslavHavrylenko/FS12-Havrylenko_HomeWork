@@ -55,9 +55,9 @@ public class Main {
         family2.getMother().greetPet(dog);
         family2.getFather().greetPet(dog);
         System.out.println(family2);
-        Human child2 = new Human("Kristine", "Travolta", LocalDate.of(2023, 7, 18), 68);
+        Woman child2 = new Woman("Kristine", "Travolta", LocalDate.of(2023, 7, 18), 68);
         family2.addChild(child2);
-        Human child21 = new Human("Rocky", "Travolta", LocalDate.of(2024, 5, 31), 56);
+        Man child21 = new Man("Rocky", "Travolta", LocalDate.of(2024, 5, 31), 56);
         family2.addChild(child21);
         System.out.println(family2);
         System.out.printf("Family 2 count %d members\n", family2.countFamily());
@@ -66,6 +66,20 @@ public class Main {
         System.out.println(family2);
         System.out.println(family2.bornChild());
         System.out.println(family2);
+
+//        ---Date---
+        System.out.println("---Date---");
+        System.out.println(man2);
+        man2.describeAge();
+        System.out.println(woman2);
+        woman2.describeAge();
+        System.out.println(child2);
+        child2.describeAge();
+        System.out.println(child21);
+        child21.describeAge();
+
+        Man adoptChild = new Man("Kirk", "Jayson", "20/03/2016", 58);
+        System.out.println(adoptChild);
 
     }
 }
