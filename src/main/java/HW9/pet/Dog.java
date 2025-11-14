@@ -1,0 +1,46 @@
+package HW9.pet;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Dog extends Pet implements Foul{
+    private Species species;
+
+    public Dog (String nickname) {
+        super(nickname);
+        this.species = Species.DOG;
+    }
+
+    public Dog (String nickname, int age, int trickLevel, Set<String> habits) {
+        super(nickname, age, trickLevel, habits);
+        this.species = Species.DOG;
+    }
+
+    public Species getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
+    }
+
+    @Override
+    public void respond() {
+        System.out.printf("Gaf, Gaf! %s, need a bones!\n", this.getNickname());
+    }
+
+    @Override
+    public void foul() {
+        System.out.println("Dog need to cover my tracks well...");
+    }
+
+    @Override
+    public String toString() {
+        return this.getSpecies() + "{" +
+                "nickname='" + this.getNickname() + '\'' +
+                (this.getAge() == 0 ? "" : ", age=" + this.getAge()) +
+                (this.getTrickLevel() == 0 ? "" : ", trickLevel=" + this.getTrickLevel()) +
+                (this.getHabits() == null ? "" : ", habits=" + this.getHabits()) +
+                '}';
+    }
+}
