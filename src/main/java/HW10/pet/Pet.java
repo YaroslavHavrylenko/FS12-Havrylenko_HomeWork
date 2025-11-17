@@ -71,7 +71,7 @@ public abstract class Pet {
 
     public String petToPrettyFormat() {
         return String.format(
-                "      %s{nickname='%s', age=%d, trickLevel=%d, habits=%s}\n",
+                "      %s - nickname='%s', age=%d, trickLevel=%d, habits=%s\n",
                 this.getClass().getSimpleName(),
                 nickname,
                 age,
