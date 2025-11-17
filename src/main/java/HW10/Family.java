@@ -8,6 +8,7 @@ import HW10.pet.Pet;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Family implements HumanCreator {
     private Woman mother;
@@ -48,8 +49,13 @@ public class Family implements HumanCreator {
     }
 
 
-    public HashSet<Pet> getPets() { return pets; }
-    public void setPets(HashSet<Pet> pets) { this.pets = pets; }
+    public HashSet<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(HashSet<Pet> pets) {
+        this.pets = pets;
+    }
 
 
     public Pet getPet(Pet pet) {
@@ -58,9 +64,11 @@ public class Family implements HumanCreator {
             return pet;
         } else return null;
     }
+
     public void addPet(Pet pet) {
         if (this.pets == null) this.pets = new HashSet<Pet>(0);
-        this.pets.add(pet); }
+        this.pets.add(pet);
+    }
 
 
     public void addChild(Human child) {
@@ -117,6 +125,29 @@ public class Family implements HumanCreator {
                 ", children=" + (children.isEmpty() ? "no children" : children) +
                 ", pet=" + ((pets == null || pets.isEmpty()) ? "no pet" : pets) +
                 '}';
+    }
+
+    public String prettyFormat() {
+        return "family:\n" +
+                "   - mother: " + mother.humanToPrettyFormat() + "\n" +
+                "   - father: " + father.humanToPrettyFormat() + "\n" +
+                "   - children:\n" + (children.isEmpty() ? "no children" : childrenToPrettyFormat(children)) +
+                "   - pets:\n" + ((pets == null || pets.isEmpty()) ? "no pet" : pets.stream()
+                .map(Pet::petToPrettyFormat)
+                .collect(Collectors.joining()));
+    }
+
+    private String childrenToPrettyFormat(List<Human> children) {
+        StringBuilder stringOfChildren = new StringBuilder();
+        for (Human child : children) {
+            if (child instanceof Man) {
+                stringOfChildren.append("      boy: ").append(child.humanToPrettyFormat()).append("\n");
+            } else {
+                stringOfChildren.append("      girl: ").append(child.humanToPrettyFormat()).append("\n");
+            }
+        }
+
+        return stringOfChildren.toString();
     }
 
     @Override

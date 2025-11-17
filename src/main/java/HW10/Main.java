@@ -71,5 +71,8 @@ public class Main {
         familyController.deleteAllChildrenOlderThen(2);
         familyController.displayAllFamilies();
         System.out.println("Pets - " + familyController.getPets(0));
+
+        System.out.println(familyController.getFamilyById(0).prettyFormat());
+
     }
 }

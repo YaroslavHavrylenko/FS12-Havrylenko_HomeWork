@@ -137,6 +137,14 @@ public class Human {
                 '}';
     }
 
+    public String humanToPrettyFormat() {
+        return "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthDate=" + birthdayFormat(birthDate) +
+                (iq == 0 ? "" : (", iq=" + iq)) +
+                (schedule == null ? "" : ", schedule=" + schedule);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
