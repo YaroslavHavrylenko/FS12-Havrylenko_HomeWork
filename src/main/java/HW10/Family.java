@@ -131,8 +131,8 @@ public class Family implements HumanCreator {
         return "family:\n" +
                 "   - mother: " + mother.humanToPrettyFormat() + "\n" +
                 "   - father: " + father.humanToPrettyFormat() + "\n" +
-                "   - children:\n" + (children.isEmpty() ? "no children" : childrenToPrettyFormat(children)) +
-                "   - pets:\n" + ((pets == null || pets.isEmpty()) ? "no pet" : pets.stream()
+                "   - children:\n" + (children.isEmpty() ? "      no children" : childrenToPrettyFormat(children)) +
+                "   - pets:\n" + ((pets == null || pets.isEmpty()) ? "      no pet" : pets.stream()
                 .map(Pet::petToPrettyFormat)
                 .collect(Collectors.joining()));
     }

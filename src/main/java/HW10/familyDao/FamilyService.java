@@ -30,7 +30,7 @@ public class FamilyService {
             System.out.println("No families at family list!");
         } else {
             System.out.println("List of families:");
-            familyList.forEach(family -> System.out.println(((familyList.indexOf(family)) + 1) + ") " + family));
+            familyList.forEach(family -> System.out.println(((familyList.indexOf(family)) + 1) + ") " + family.prettyFormat()));
         }
     }
 
@@ -38,7 +38,7 @@ public class FamilyService {
         List<Family> familyList = getAllFamilies();
         return familyList.stream()
                 .filter(family -> family.countFamily() > quantity)
-                .peek(family -> System.out.println(((familyList.indexOf(family)) + 1) + ") " + family))
+                .peek(family -> System.out.println(((familyList.indexOf(family)) + 1) + ") " + family.prettyFormat()))
                 .collect(Collectors.toList());
     }
 
@@ -46,7 +46,7 @@ public class FamilyService {
         List<Family> familyList = getAllFamilies();
         return familyList.stream()
                 .filter(family -> family.countFamily() < quantity)
-                .peek(family -> System.out.println(((familyList.indexOf(family)) + 1) + ") " + family))
+                .peek(family -> System.out.println(((familyList.indexOf(family)) + 1) + ") " + family.prettyFormat()))
                 .collect(Collectors.toList());
     }
 
